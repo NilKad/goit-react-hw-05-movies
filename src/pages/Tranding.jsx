@@ -1,21 +1,21 @@
 import { MoviesGetTranding } from 'components/API/FetchFilms';
-import { RenderFilmsList } from 'components/RenderFilmsList/RenderFilmsList';
-import { useEffect, useState } from 'react';
+import RenderFilmsList from 'components/RenderFilmsList/RenderFilmsList';
+import { Suspense, useEffect, useState } from 'react';
 
 let isMounted = false;
 
-export const Tranding = () => {
+const Tranding = () => {
   const [filmsList, setFilmsList] = useState([]);
 
   const getFilms = async () => {
     const films = await MoviesGetTranding();
     setFilmsList(films.data.results);
-    console.log('getting films');
+    // console.log('getting films');
   };
 
   useEffect(() => {
     if (isMounted) return;
-    console.log('Mount Tranding');
+    // console.log('Mount Tranding');
     getFilms();
     isMounted = true;
 
@@ -24,16 +24,16 @@ export const Tranding = () => {
     };
   }, []);
 
-  // useEffect(() => {
-
-  // }, [filmsList])
-
   return (
     <>
       <h1>Tranding toodays</h1>
 
-      {filmsList.length > 0 && console.log('prepareFilmsList ', filmsList)}
-      {filmsList.length > 0 && <RenderFilmsList filmList={filmsList} />}
+      {/* {filmsList.length > 0 && console.log('prepareFilmsList ', filmsList)} */}
+      <Suspense>
+        {filmsList.length > 0 && <RenderFilmsList filmList={filmsList} />}
+      </Suspense>
     </>
   );
 };
+
+export default Tranding;

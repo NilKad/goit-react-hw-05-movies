@@ -1,10 +1,10 @@
-import { RenderFilmsItem } from 'components/RenderFilmsItem/RenderFilmsItem';
+// import RenderFilmsItem from 'components/RenderFilmsItem/RenderFilmsItem';
 
-export const RenderFilmsList = ({ filmList }) => {
-  // console.log('RenderFilmsList: ', filmList);
+import RenderFilmsItem from 'components/RenderFilmsItem/RenderFilmsItem';
+
+const RenderFilmsList = ({ filmList }) => {
   return (
     <>
-      {/* <h2>Listing Films</h2> */}
       <ul>
         {filmList.map(item => {
           return (
@@ -15,3 +15,5 @@ export const RenderFilmsList = ({ filmList }) => {
     </>
   );
 };
+
+export default RenderFilmsList;

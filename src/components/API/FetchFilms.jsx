@@ -10,21 +10,9 @@ const fetchTmdb = {
   fetchTrending: `/trending/movie/day`,
   fetchSearchMovies: `/search/movie`,
   fetchSearchMoviesId: `/movie`,
-  // fetchTopRated: `/movie/top_rated?api_key=${API_KEY}&language=en-US`,
-  // fetchActionMovies: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
-  // fetchComedyMovies: `/discover/movie?api_key=${API_KEY}&with_genres=35`,
-  // fetchHorrorMovies: `/discover/movie?api_key=${API_KEY}&with_genres=27`,
-  // fetchRomanceMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10749`,
-  // fetchMystery: `/discover/movie?api_key=${API_KEY}&with_genres=9648`,
-  // fetchSciFi: `/discover/movie?api_key=${API_KEY}&with_genres=878`,
-  // fetchWestern: `/discover/movie?api_key=${API_KEY}&with_genres=37`,
-  // fetchAnimation: `/discover/movie?api_key=${API_KEY}&with_genres=16`,
-  // fetchTV: `/discover/movie?api_key=${API_KEY}&with_genres=10770`,
+  fetchSearchMoviesCredits: `/movie`,
+  fetchSearchMoviesReviews: `/movie`,
 };
-
-// const fetchAPI = async () => {
-//   const data = await axios.get(fetchTmdb.fetchTrending);
-// };
 
 const MoviesGetTranding = async () => {
   const data = await axios.get(fetchTmdb.fetchTrending);
@@ -37,7 +25,27 @@ const MoviesSearch = async searchQuery => {
   const data = await axios.get(fetchTmdb.fetchSearchMovies, {
     params: { query: searchQuery },
   });
-  console.log('MoviesSearch', data);
+  // console.log('MoviesSearch', data);
+  return data;
+};
+
+const fetchSearchMoviesCredits = async filmId => {
+  const data = await axios.get(
+    `${fetchTmdb.fetchSearchMoviesId}/${filmId}/credits`,
+    {
+      params: {},
+    }
+  );
+  return data;
+};
+
+const fetchSearchMoviesReviews = async filmId => {
+  const data = await axios.get(
+    `${fetchTmdb.fetchSearchMoviesId}/${filmId}/reviews`,
+    {
+      params: {},
+    }
+  );
   return data;
 };
 
@@ -48,7 +56,6 @@ const MoviesDetails = async filmId => {
   // console.log('MoviesDetails', data);
   return data;
 };
-
 const MoviesCredits = () => {
   return '';
 };
@@ -63,4 +70,6 @@ export {
   MoviesDetails,
   MoviesCredits,
   MoviesReviews,
+  fetchSearchMoviesCredits,
+  fetchSearchMoviesReviews,
 };

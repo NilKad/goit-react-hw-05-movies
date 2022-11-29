@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { MoviesSearch } from 'components/API/FetchFilms';
-import { RenderFilmsList } from 'components/RenderFilmsList/RenderFilmsList';
+// import RenderFilmsList from 'components/RenderFilmsList/RenderFilmsList';
 import { useSearchParams } from 'react-router-dom';
+import { FormSearch } from './Movies.module';
+import RenderFilmsList from 'components/RenderFilmsList/RenderFilmsList';
 
-export const Movies = () => {
+const Movies = () => {
   const [filmsList, setFilmsList] = useState([]);
   const [searchFilm, setSearchFilm] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,7 +26,7 @@ export const Movies = () => {
   const searchSubmitFilms = async searchQuery => {
     const films = await MoviesSearch(searchQuery);
     setFilmsList(films.data.results);
-    console.log('getting search  films');
+    // console.log('getting search  films');
   };
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export const Movies = () => {
 
   return (
     <>
-      <form onSubmit={searchSubmit}>
+      <FormSearch onSubmit={searchSubmit}>
         <input
           type="text"
           name="searchFilms"
@@ -51,8 +53,10 @@ export const Movies = () => {
           onChange={updateQueryString}
         />
         <button type="submit">Search</button>
-      </form>
+      </FormSearch>
       {filmsList.length > 0 && <RenderFilmsList filmList={filmsList} />}
     </>
   );
 };
+
+export default Movies;
