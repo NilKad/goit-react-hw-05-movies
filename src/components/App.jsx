@@ -11,7 +11,6 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import React from 'react';
 
 const Movies = lazy(() => import('../pages/Movies'));
-// import { Link } from 'react-router-dom';
 export const App = () => {
   return (
     <>
@@ -24,8 +23,6 @@ export const App = () => {
             <Route path="reviews" element={<Reviews />}></Route>
           </Route>
           <Route index element={<Movies />}></Route>
-          {/* <Route></Route> */}
-          {/* <Route></Route> */}
         </Route>
       </Routes>
     </>

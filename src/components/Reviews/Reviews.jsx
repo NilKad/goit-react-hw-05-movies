@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Reviews = () => {
-  // fetchSearchMoviesReviews;
-
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState([]);
   const refMovieID = useRef(null);
@@ -14,7 +12,6 @@ const Reviews = () => {
     if (refMovieID.current === movieId) return;
     const movieSearchCreditsID = async () => {
       const response = await fetchSearchMoviesReviews(movieId);
-      // console.log('response reviews: ', response.data.results);
       setMovieReviews(response.data.results);
     };
     movieSearchCreditsID();

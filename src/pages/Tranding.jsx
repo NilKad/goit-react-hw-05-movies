@@ -10,12 +10,10 @@ const Tranding = () => {
   const getFilms = async () => {
     const films = await MoviesGetTranding();
     setFilmsList(films.data.results);
-    // console.log('getting films');
   };
 
   useEffect(() => {
     if (isMounted) return;
-    // console.log('Mount Tranding');
     getFilms();
     isMounted = true;
 
@@ -27,8 +25,6 @@ const Tranding = () => {
   return (
     <>
       <h1>Tranding toodays</h1>
-
-      {/* {filmsList.length > 0 && console.log('prepareFilmsList ', filmsList)} */}
       <Suspense>
         {filmsList.length > 0 && <RenderFilmsList filmList={filmsList} />}
       </Suspense>

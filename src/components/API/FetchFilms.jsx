@@ -16,7 +16,6 @@ const fetchTmdb = {
 
 const MoviesGetTranding = async () => {
   const data = await axios.get(fetchTmdb.fetchTrending);
-  // console.log('MoviesGetTranding', data);
 
   return data;
 };
@@ -25,7 +24,6 @@ const MoviesSearch = async searchQuery => {
   const data = await axios.get(fetchTmdb.fetchSearchMovies, {
     params: { query: searchQuery },
   });
-  // console.log('MoviesSearch', data);
   return data;
 };
 
@@ -53,7 +51,6 @@ const MoviesDetails = async filmId => {
   const data = await axios.get(`${fetchTmdb.fetchSearchMoviesId}/${filmId}`, {
     params: {},
   });
-  // console.log('MoviesDetails', data);
   return data;
 };
 const MoviesCredits = () => {

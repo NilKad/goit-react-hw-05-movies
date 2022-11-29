@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { MoviesSearch } from 'components/API/FetchFilms';
-// import RenderFilmsList from 'components/RenderFilmsList/RenderFilmsList';
 import { useSearchParams } from 'react-router-dom';
 import { FormSearch } from './Movies.module';
 import RenderFilmsList from 'components/RenderFilmsList/RenderFilmsList';
@@ -26,7 +25,6 @@ const Movies = () => {
   const searchSubmitFilms = async searchQuery => {
     const films = await MoviesSearch(searchQuery);
     setFilmsList(films.data.results);
-    // console.log('getting search  films');
   };
 
   useEffect(() => {

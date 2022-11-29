@@ -52,16 +52,6 @@ const MovieDetails = () => {
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         : imgDefault
     );
-    // console.log('MovieDetails ****movie: ', movie);
-    // console.log('movie.title: ', movie?.title);
-    // console.log(
-    //   'movie genres: ',
-    //   movie.genres
-    //     .map(item => {
-    //       return Object.values(item)[1];
-    //     })
-    //     .join(', ')
-    // );
   }, [movie]);
 
   return (

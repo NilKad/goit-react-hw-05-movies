@@ -12,11 +12,9 @@ const SharedLayout = () => {
         </nav>
       </Header>
       <Main>
-        {/* <container> */}
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
-        {/* </container> */}
       </Main>
     </>
   );

@@ -1,5 +1,3 @@
-// import RenderFilmsItem from 'components/RenderFilmsItem/RenderFilmsItem';
-
 import RenderFilmsItem from 'components/RenderFilmsItem/RenderFilmsItem';
 
 const RenderFilmsList = ({ filmList }) => {
