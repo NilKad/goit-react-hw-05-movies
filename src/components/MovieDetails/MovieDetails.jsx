@@ -18,6 +18,7 @@ const MovieDetails = () => {
   const refMovieID = useRef(null);
   // const isLoading = useRef(false);
   const [movie, setMovie] = useState(null);
+  const [movieImg, setMovieImg] = useState('');
   const location = useLocation();
   const backLinkRef = location.state?.from ?? '/';
 
@@ -46,6 +47,11 @@ const MovieDetails = () => {
 
   useEffect(() => {
     if (movie == null) return;
+    setMovieImg(
+      movie?.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : imgDefault
+    );
     // console.log('MovieDetails ****movie: ', movie);
     // console.log('movie.title: ', movie?.title);
     // console.log(
@@ -58,7 +64,6 @@ const MovieDetails = () => {
     // );
   }, [movie]);
 
-  console.log('movie.poster_path: ', movie?.poster_path);
   return (
     <>
       {movie && (
@@ -67,20 +72,9 @@ const MovieDetails = () => {
             <BackLink to={backLinkRef}>Go Back</BackLink>
             <MovieWrap>
               <WrapDescription>
-                {movie.poster_path && (
-                  <DescriptionImg>
-                    <img
-                      src={
-                        movie?.poster_path !== null
-                          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                          : imgDefault
-                      }
-                      alt=""
-                      width="400"
-                    ></img>
-                  </DescriptionImg>
-                )}
-
+                <DescriptionImg>
+                  <img src={movieImg} alt="" width="400" />
+                </DescriptionImg>
                 <div>
                   <h2>{`${movie.title} (${movie.release_date?.slice(
                     0,
