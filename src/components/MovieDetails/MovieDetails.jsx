@@ -9,6 +9,8 @@ import {
   WrapDescription,
 } from './MovieDetails.module';
 
+import imgDefault from 'img/not-found-400x600.jpg';
+
 // let isMounted = false;
 
 const MovieDetails = () => {
@@ -56,6 +58,7 @@ const MovieDetails = () => {
     // );
   }, [movie]);
 
+  console.log('movie.poster_path: ', movie?.poster_path);
   return (
     <>
       {movie && (
@@ -67,7 +70,11 @@ const MovieDetails = () => {
                 {movie.poster_path && (
                   <DescriptionImg>
                     <img
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      src={
+                        movie?.poster_path !== null
+                          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                          : imgDefault
+                      }
                       alt=""
                       width="400"
                     ></img>

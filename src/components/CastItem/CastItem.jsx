@@ -10,7 +10,7 @@ export const CastItem = ({ castItem }) => {
         src={
           profile_path !== null
             ? `https://image.tmdb.org/t/p/w200${profile_path}`
-            : { imgDefault }
+            : imgDefault
         }
         alt={name}
         width="150"
